@@ -197,3 +197,10 @@ tree like structure
 
 console.log(document.)
 when you write 'document.' after that if you see after '.' you will see lots of method will see
+| 1 Img  | 2 Img |
+| ------------- | ------------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/d9714478-9386-44e2-9db8-1ad88c7d395d)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a3ed5171-e715-4e88-a682-5cc209ddd09c)
+
+Extenstion Requre for JavaScript
+1) Liver Server
+2) Prettier-Code formatter

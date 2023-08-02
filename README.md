@@ -29,7 +29,11 @@ console.log(points);
 
 let name = "ABC";
 let lastname = "xyz";
- 
+
+# Console.log();
+A console is an Object and Object have properties and method.
+
+
  // Console.log properties , if we try to divide by comma then then it will print with space
  
  console.log(name,lastname);

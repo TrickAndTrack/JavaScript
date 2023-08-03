@@ -3,33 +3,8 @@ JavaScript, often abbreviated as JS, is a programming language that is one of th
 
 > Q) Where we can write Javascript>
 > We can write in the head tag and in the body tag
+# Console
 
-### Data Types of values
-7 data types in javascript
-#### Number
-#### String 
-"word" or 'word' both are the same but for standard use we need to maintain standards so when we use follow only one pattern single cote or double cote
-
-#### Boolean 
-
-#### null 
-null intentionally absence values
- let score = null;
- score = 34;
- console.log(score);
-
-// undefined variable declared but not initiall
-
-let points;
-console.log(points);
-#### Object
-Object Complex data structure
-Symbol looks like an object
-
-let name = "ABC";
-let lastname = "xyz";
-
-# Console.log();
 A console is an Object and Objects have properties and methods.
 Console.log properties, if we try to divide by a comma then then it will print with space
 console.log(name,lastname);
@@ -71,6 +46,104 @@ console.log(stringType,typeof);
 #### Control flow
 
 #### for loop
+```
+// Log number
+console.log(100);
+
+// Log string
+console.log('Hello World');
+
+// Log multiple values
+console.log(20, 'Hello', true);
+
+// Log a variable
+const x = 100;
+console.log(x);
+
+// Console error & warning
+console.error('Alert');
+console.warn('Warning');
+
+// Log object as table
+console.table({ name: 'Brad', email: 'brad@gmail.com' });
+
+// Group console commands
+console.group('simple');
+console.log(x);
+console.error('Alert');
+console.warn('Warning');
+console.groupEnd();
+
+// Add CSS to logs
+const styles = 'padding: 10px; background-color: white; color: green';
+console.log('%cHello World', styles);
+```
+
+# Veriable 
+### let Var const:
+Let and Var
+
+In global scope Var and let working in a similar way and Const is little diffrant its for consatatt and its for value that are not going to reassigned at a letter time.
+
+let firstName = 'John';
+let lastName = 'Doe';
+console.log(firstName, lastName);
+let age = 30;
+
+console.log(age);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Data Types of values
+
+ 
+
+7 data types in javascript
+#### Number
+#### String 
+"word" or 'word' both are the same but for standard use we need to maintain standards so when we use follow only one pattern single cote or double cote
+
+#### Boolean 
+
+#### null 
+null intentionally absence values
+ let score = null;
+ score = 34;
+ console.log(score);
+
+// undefined variable declared but not initiall
+
+let points;
+console.log(points);
+#### Object
+Object Complex data structure
+Symbol looks like an object
+
+let name = "ABC";
+let lastname = "xyz";
+
+
 
 
 #### arrow Functions(ES6)
@@ -160,8 +233,8 @@ console.log(invitation("TrickAndTarck"))
  console.log(car.color) // use direct property name
  
  // modify The Object
- // delete properties ofthe  object
- // It alwaysreturnsn true
+ //delete propertiess of thee  object
+ //It alwayssreturnsn true
 //This keyword
  // In each method we have access of special keyword called "this "
 //This keyword represents the object. "Calling" the "method"
@@ -189,3 +262,10 @@ when you write 'document.' after that if you see after '.' you will see lots of 
 Extenstion Requre for JavaScript
 1) Liver Server
 2) Prettier-Code formatter
+
+# Short Cuts
+1) Ctrl + right/left // arrow will go to the end of the line Or the start of the line
+2) Alt +  right/left // arrow will go to the end of the Object Or start of the Object( like brackets method, word, function )
+3) OPT/Alt + up/down // line will move up and down
+4) CMD/Ctrl + D // you can edit multiple lines at a time.
+5) 

@@ -84,6 +84,7 @@ console.log('%cHello World', styles);
 Let and Var
 
 In global scope Var and let working in a similar way and Const is little diffrant its for consatatt and its for value that are not going to reassigned at a letter time.
+1st Example:
 
 let firstName = 'John';
 let lastName = 'Doe';
@@ -92,31 +93,68 @@ let age = 30;
 
 console.log(age);
 
+2nd Example:
 
+let firstName = 'John';
+let lastName = 'Doe';
+console.log(firstName, lastName);
+var age = 30;
+  
+console.log(age);
+1st output is john Doe (undefined)
+2nd output is 30 
+it is undefined and this i due to something called hoisting
+Which is a little more adavaced
 
+### Naming Conventions
+ - Only letters, numbers, underscores and dollar signs
+ - Can't start with a number
 
+. ) Multi-Word Formatting
+ firstName = camelCase
+ first_name = underscore
+ FirstName = PascalCase
+ firstname = lowercase
+# Re-asohning Veribales
+ We can re-assign `let` variables. If you change `age` to use `const`, you will get an error
+ With let, we can declare a value without assigning a value
+![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/14a4ab4e-acff-4b81-850b-91221d9b86ef)
 
+We can not re-assign a const variable, Will result in an error,
 
+We can still manipulate arrays and objects using const,
+I am not directly chanaging veribale i am changing property or a key inside the varibale or not a key but a value of a key.
+![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/0bdcb7d4-8df1-4369-b160-71e9918384c3)
 
+> Q) which one is the best let, var, cosnt? I always use const unless I know iam going to directly reassign something. 
 
+# Declare multiple values at once
+```
+let a, b, c;
 
+const d = 10,
+  e = 20,
+  f = 30;
 
+console.log(d);
+console.log(a);
+// output :
+10
+undefined
+```
 
+#  Data Types
+## Primitive Data type
+ ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/79f0a20c-8e11-456b-86f3-23b4e03af051)
 
+Bigint -> New data type was just recently added called Bigint, and its just represent  really big integer or larger Number.
 
+## Referernace Type (Object)
+Reference data types, unlike primitive data types, are dynamic in nature. That is, they do not have a fixed size.
 
-
-
-
-
-
-
-
-
-
-
-### Data Types of values
-
+Most of them are considered as objects, and therefore have methods. Examples of such data types include arrays, functions, collections, Date, and all other types of objects.
+ Referernace Type or "Object" are non-primitive value and when asigned to a verible, the veriable is given a refreance to that value.
+ Object literaks, arrays and functions are all refreance types.
  
 
 7 data types in javascript

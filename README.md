@@ -498,14 +498,184 @@ const rmOutput = `${x} % ${y} = ${rm}`;
 console.log(rmOutput);
 ```
 
+## Date & Time
+let d;
+
+// Get today's date and time
+d = new Date();
+
+// Set to a string
+d = d.toString();
+
+// Get a specific date
+// Important: the month is 0-based, so 0 is January and 11 is December
+d = new Date(2021, 0, 10, 12, 30, 0);
+
+// Pass in a string
+d = new Date('2021-07-10T12:30:00');
+d = new Date('07/10/2021 12:30:00');
+d = new Date('2022-07-10');
+d = new Date('07-10-2022');
+
+// https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
+
+// Get current timestamp
+d = Date.now();
+
+// Get the timestamp of a specific date
+d = new Date();
+d = d.getTime();
+d = d.valueOf();
+
+// Create a date from a timestamp
+d = new Date(1666962049745);
+
+// Convert from milliseconds to seconds
+d = Math.floor(Date.now() / 1000);
+
+console.log(d);
+## Date-Object method
+```
+let x;
+let d = new Date();
+
+// Date methods
+
+x = d.toString();
+
+x = d.getTime();
+x = d.valueOf();
+
+x = d.getFullYear();
+
+x = d.getMonth();
+x = d.getMonth() + 1;
+
+x = d.getDate();
+
+x = d.getDay();
+
+x = d.getHours();
+
+x = d.getMinutes();
+
+x = d.getSeconds();
+
+x = d.getMilliseconds();
+
+x = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+
+// Intl.DateTimeFormat API (locale specific)
+x = Intl.DateTimeFormat('en-US').format(d);
+x = Intl.DateTimeFormat('en-GB').format(d);
+x = Intl.DateTimeFormat('default').format(d);
+
+x = Intl.DateTimeFormat('default', { month: 'long' }).format(d);
+
+x = d.toLocaleString('default', { month: 'short' });
+
+x = d.toLocaleString('default', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric',
+  timeZone: 'America/New_York',
+});
+
+console.log(x);
+```
+
+# Arrays & Object
+Screenshot 2.38 hr
+
+### Array Literal
+const numbers = [12, 45, 33, 29, 39, 102];
+const mixed = [12, 'Hello', true, null];
+
+### Array Constructor
+const fruits = new Array('apple', 'grape', 'orange');
+
+#### Get value by index
+x = numbers[0];
+
+x = numbers[0] + numbers[3];
+
+x = `My favorite fruit is an ${fruits[2]}`;
+
+x = numbers.length;
+
+fruits[2] = 'pear';
+
+#### length is not read-only
+#### fruits.length = 2;
+
+fruits[3] = 'strawberry';
+
+#### Using the length as the index will always add on the the end
+fruits[fruits.length] = 'blueberry';
+fruits[fruits.length] = 'peach';
+
+x = fruits;
+
+console.log(x);
+
+## Basic ArraY Method
+let x;
+
+const arr = [28, 38, 44, 29, 109];
+
+### push() - Push a value on to the end of the array
+arr.push(100);
+
+### pop() - Take the last value off
+arr.pop();
+
+### unshift() - Add a value to the beginning of the array
+arr.unshift(99);
+
+### shift() - Remove first value
+arr.shift();
+
+### reverse() - Reverse an array
+arr.reverse();
+
+### includes() - Check to see if something is in the array
+x = arr.includes(445);
+
+### indexOf() - Return the index of the first match
+x = arr.indexOf(28);
+
+### Return array as a string
+x = arr.toString();
+x = arr.join();
+
+### slice() returns selected elements in an array, as a new array. Slice takes in the index of the first element and the index of the last element to be included in the new array.
+x = arr.slice(1, 4);
+
+### splice() works like slice() except it takes the index of the first element and the number of elements after that as a second argument. it also mutates the original array where slice() does not
+x = arr.splice(1, 4);
+
+### Remove a single element/value - The following will mutate the original array by taking out the element with the index of 4. x will be equal to a new array with that plucked out value.
+x = arr.splice(4, 1);
+
+### Chaining methods - Some methods can be chained depending on the return value.
+x = arr.slice(1, 4).reverse().toString().charAt(0);
+
+console.log(x);
+
+## array-nesting-concat-spread
+
 #### arrow Functions(ES6)
 
-A special form of function expression
-It allows us to write functions more fast because
+A special form of a function expression
+It allows us to write functions faster because
 No need to use the function keyword
 No need to use parenthesis() in the case of a single parameter
-No need to use curly {} if a single line code in function
-No need to use a return statement if single line code is function
+No need to use curly {} if a single line code in the function
+No need to use a return statement if a single line code is a function
 
 #### Normal function expression
 

@@ -155,17 +155,30 @@ Reference data types, unlike primitive data types, are dynamic in nature. That i
 Most of them are considered as objects, and therefore have methods. Examples of such data types include arrays, functions, collections, Date, and all other types of objects.
  Referernace Type or "Object" are non-primitive value and when asigned to a verible, the veriable is given a refreance to that value.
  Object literaks, arrays and functions are all refreance types.
+
+
+## Static Typing & Dynamin Types
+![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/51315527-cbbd-4bc9-af75-e41e4cd0030b)
+
+
+# 7 data types in javascript
+![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/9e7fcc47-01e2-4baa-bb17-98fa4c082883)
+
+#### String
+const firstName = 'Sara';
  
+"word" or 'word' both are the same but for standard use we need to maintain standards so when we use follow only one pattern single cote or double cote.
 
-7 data types in javascript
 #### Number
-#### String 
-"word" or 'word' both are the same but for standard use we need to maintain standards so when we use follow only one pattern single cote or double cote
+const age = 30;
+const temp = 98.9;
 
-#### Boolean 
+#### Boolean
+const hasKids = true;
 
-#### null 
-null intentionally absence values
+#### Null
+const aptNumber = null;
+null intentional absence values
  let score = null;
  score = 34;
  console.log(score);
@@ -174,6 +187,25 @@ null intentionally absence values
 
 let points;
 console.log(points);
+
+#### Undefined
+// let score;
+const score = undefined;
+
+#### Symbol
+const id = Symbol('id');
+
+#### BigInt
+const n = 9007199254740991n;
+
+
+// Reference Types
+
+const numbers = [1, 2, 3, 4]; 
+
+const person = {
+  name: 'Brad',
+};
 #### Object
 Object Complex data structure
 Symbol looks like an object
@@ -181,8 +213,45 @@ Symbol looks like an object
 let name = "ABC";
 let lastname = "xyz";
 
+## Stack-heap
+![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/d64974af-82a5-4ec9-96db-9400b13e1315)
+// Value is stored in the stack
+const name = 'John';
+const age = 30;
 
+// Reference is stored in the heap
+const person = {
+  name: 'Brad',
+  age: 40,
+};
 
+let newName = name;
+newName = 'Jonathan';
+
+let newPerson = person;
+newPerson.name = 'Bradley';
+
+console.log(name, newName); // John, Jonathan
+console.log(person, newPerson); // { name: 'Bradley', age: 40 }, { name: 'Bradley', age: 40 }
+## type-conversion
+let amount = '100';
+console.log(amount, typeof amount());
+ Expcetly conversion
+
+#### Convert string to number
+amount = parseInt(amount);
+amount = +amount;
+amount = Number(amount);
+
+#### Convert number to string
+amount = amount.toString();
+amount = String(amount);
+
+#### Convert string to decimal
+amount = parseFloat(amount);
+
+#### Convert number to boolean
+amount = Boolean(amount);
 
 #### arrow Functions(ES6)
 

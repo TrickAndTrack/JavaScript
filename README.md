@@ -164,14 +164,107 @@ Most of them are considered as objects, and therefore have methods. Examples of 
 # 7 data types in javascript
 ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/9e7fcc47-01e2-4baa-bb17-98fa4c082883)
 
-#### String
+## String
 const firstName = 'Sara';
  
 "word" or 'word' both are the same but for standard use we need to maintain standards so when we use follow only one pattern single cote or double cote.
+  
+let x;
+
+const name = 'John';
+const age = 31;
+
+#### Concatenation
+x = 'Hello, my name is ' + name + ' and I am ' + age + ' years old';
+
+#### Template Literals (it was the ES2015 or ES6 updated where template literals were introduced before that we use concatenation)
+Template Literals use back-ticks (``) rather than the quotes ("") to define a string, Template literals allow multiline strings, Template literals provide an easy way to interpolate variables and expressions into strings, Template literals allow variables in strings, Template literals allow expressions in strings.
+
+x = `Hello, my name is ${name} and I am ${age} years old`;
+
+#### String Properties and Methods
+
+// Creating a "string object" (JS does this automatically when using a property or method on a primitive string)
+const s = new String('Hello World');
+
+x = typeof s;
+
+x = s.length;
+
+#### Access value by key
+x = s[0];
+
+// Shows the prototype of the string object. Shows the list of properties and methods.
+x = s.__proto__;
+
+#### Change case
+x = s.toUpperCase();
+x = s.toLowerCase();
+
+##### charAt() - returns the character at the specified index
+x = s.charAt(0);
+
+##### indexOf - returns the index of the first occurrence of a specified value in a string
+x = s.indexOf('d');
+
+##### substring() - search a string for a specified value
+x = s.substring(2, 5);
+x = s.substring(7); // started at 7 with end of the length
+
+##### slice() - extracts a part of a string and returns a new string
+x = s.slice(-11, -6);
+
+##### trim() - remove whitespace from beginning and end of string
+x = '         Hello World';
+x = x.trim();
+
+##### replace() - replace all instances of a string
+x = s.replace('World', 'John');
+
+##### includes() - returns true if the string is found
+x = s.includes('Hell');
+
+##### valueOf() - returns the primitive value of a variable
+x = s.valueOf();
+
+##### split() - returns an array of strings
+x = s.split('');
+
+console.log(x);
 
 #### Number
 const age = 30;
 const temp = 98.9;
+let x;
+const num = new Number(5);
+
+##### toString() - returns a string representation of the number
+x = num.toString();
+// To get the length
+x = num.toString().length;
+
+##### toFixed() - returns a string representation of the number with a specified number of decimals
+x = num.toFixed(2);
+
+##### toPrecision() - returns a number with the specified length
+x = num.toPrecision(3);
+
+##### toExponential() -  convert a number to exponential notation and return its value as a string
+x = num.toExponential(2);
+
+##### toLocaleString() - returns a string representation of the number, using the current locale
+x = num.toLocaleString('en-US');
+
+##### valueOf - Get value
+x = num.valueOf();
+
+// The Number object itself has some properties and methods
+
+##### Largest and smallest possible number
+x = Number.MAX_VALUE;
+x = Number.MIN_VALUE;
+
+console.log(x);
 
 #### Boolean
 const hasKids = true;
@@ -284,8 +377,8 @@ x = 7 % 5;
 ```
 x = 'Hello' + ' ' + 'World';
 ```
-```
-##Exponent
+## Exponent
+```  
 x = 2 ** 3;
 ```
 
@@ -317,10 +410,10 @@ x **= 5;
 ## 3. Comparison Operators
 
 #### Equal to (Just the value, not the type)
-x = 2 == '2';
+x = 2 == '2'; // double equal does not test the type it only tests the actual value inside
 
 #### Equal to (Type and value)
-x = 2 === '2';
+x = 2 === '2'; // triple equal not only evaluates the value but it evaluates the type as well so types have to match
 
 #### Not equal to (Just the value, not the type)
 x = 2 != '2';
@@ -336,6 +429,74 @@ x = 10 >= 5;
 
 console.log(x);
 
+## type coercion
+Type Coercion refers to the process of automatic or implicit conversion of values from one data type to another. This includes conversion from Number to String, String to Number, Boolean to Number etc. when different types of operators are applied to the values.
+let x;
+
+// Coerced to a string
+x = 5 + '5';
+
+x = 5 + Number('5');
+
+// Coerced to a number
+x = 5 * '5';
+
+// null is coerced to 0 as it is a `falsy` value
+x = 5 + null;
+
+x = Number(null);
+
+x = Number(true);
+x = Number(false);
+
+// true is coerced to a 1
+x = 5 + true;
+
+// false is coerced to 0 (falsy)
+x = 5 + false;
+
+// Undefined(NaN) is coerced to 0 (falsy) 
+x = 5 + undefined;
+
+console.log(x, typeof x);
+
+## Math Object
+let x;
+
+#### Square root
+x = Math.sqrt(9);
+
+#### Absolute value
+x = Math.abs(-5);
+```
+const x = Math.floor(Math.random() * 100 + 1);
+const y = Math.floor(Math.random() * 50 + 1);
+
+// Get the sum
+const sum = x + y;
+const sumOutput = `${x} + ${y} = ${sum}`;
+console.log(sumOutput);
+
+// Get the difference
+const diff = x - y;
+const diffOutput = `${x} - ${y} = ${diff}`;
+console.log(diffOutput);
+
+// Get the product
+const prod = x * y;
+const prodOutput = `${x} * ${y} = ${prod}`;
+console.log(prodOutput);
+
+// Get the quotient
+const quot = x / y;
+const quotOutput = `${x} / ${y} = ${quot}`;
+console.log(quotOutput);
+
+// Get the remainder
+const rm = x % y;
+const rmOutput = `${x} % ${y} = ${rm}`;
+console.log(rmOutput);
+```
 
 #### arrow Functions(ES6)
 

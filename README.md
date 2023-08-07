@@ -208,7 +208,7 @@ const person = {
 };
 #### Object
 Object Complex data structure
-Symbol looks like an object
+The symbol looks like an object
 
 let name = "ABC";
 let lastname = "xyz";
@@ -232,26 +232,110 @@ let newPerson = person;
 newPerson.name = 'Bradley';
 
 console.log(name, newName); // John, Jonathan
-console.log(person, newPerson); // { name: 'Bradley', age: 40 }, { name: 'Bradley', age: 40 }
+console.log(person, newsperson); // { name: 'Bradley', age: 40 }, { name: 'Bradley', age: 40 }
 ## type-conversion
+```
 let amount = '100';
-console.log(amount, typeof amount());
+console.log(amount, type of amount());
  Expcetly conversion
+```
 
 #### Convert string to number
+```
 amount = parseInt(amount);
 amount = +amount;
 amount = Number(amount);
+```
 
 #### Convert number to string
+```
 amount = amount.toString();
 amount = String(amount);
-
+```
 #### Convert string to decimal
+```
 amount = parseFloat(amount);
-
-#### Convert number to boolean
+```
+#### Convert number to a boolean
+```
 amount = Boolean(amount);
+```
+#### Ways to get NaN
+```
+console.log(Math.sqrt(-1));
+console.log(1 + NaN);
+console.log(undefined + undefined);
+console.log('foo' / 3);
+
+console.log(amount, typeof amount);
+```
+
+## 1. Arithmetic Operators
+```
+let x;
+
+x = 5 + 5;
+x = 5 - 5;
+x = 5 * 5;
+x = 5 / 5;
+x = 7 % 5;
+```
+## Concatenation
+```
+x = 'Hello' + ' ' + 'World';
+```
+```
+##Exponent
+x = 2 ** 3;
+```
+
+## Increment
+```
+x = 1;
+// x = x + 1;
+x++;
+```
+
+## Decrement
+```
+// x = x - 1;
+x--;
+```
+
+## 2. Assignment Operators
+```
+x = 10;
+
+x += 5;
+x -= 5;
+x *= 5;
+x /= 5;
+x %= 5;
+x **= 5;
+```
+
+## 3. Comparison Operators
+
+#### Equal to (Just the value, not the type)
+x = 2 == '2';
+
+#### Equal to (Type and value)
+x = 2 === '2';
+
+#### Not equal to (Just the value, not the type)
+x = 2 != '2';
+
+#### Not equal to (Type and value)
+x = 2 !== 2;
+
+#### Greater than and less than
+x = 10 > 5;
+x = 10 < 5;
+x = 10 <= 5;
+x = 10 >= 5;
+
+console.log(x);
+
 
 #### arrow Functions(ES6)
 
@@ -327,6 +411,7 @@ console.log(invitation("TrickAndTarck"))
  }
  
  console.log(car);
+
  
  
 #### Accessing the Javascript object properties

@@ -592,13 +592,16 @@ console.log(x);
 Screenshot 2.38 hr
 
 ### Array Literal
+```
 const numbers = [12, 45, 33, 29, 39, 102];
 const mixed = [12, 'Hello', true, null];
-
+```
 ### Array Constructor
+```
 const fruits = new Array('apple', 'grape', 'orange');
-
+```
 #### Get value by index
+```
 x = numbers[0];
 
 x = numbers[0] + numbers[3];
@@ -608,19 +611,21 @@ x = `My favorite fruit is an ${fruits[2]}`;
 x = numbers.length;
 
 fruits[2] = 'pear';
-
+```
 #### length is not read-only
 #### fruits.length = 2;
-
+```
 fruits[3] = 'strawberry';
-
+```
 #### Using the length as the index will always add on the the end
+```
 fruits[fruits.length] = 'blueberry';
 fruits[fruits.length] = 'peach';
 
 x = fruits;
 
 console.log(x);
+```
 
 ## Basic ArraY Method
 let x;
@@ -667,6 +672,58 @@ x = arr.slice(1, 4).reverse().toString().charAt(0);
 console.log(x);
 
 ## array-nesting-concat-spread
+```
+let x;
+
+const fruits = ['apple', 'pear', 'orange'];
+const berries = ['strawberry', 'blueberry', 'rasberry'];
+
+// Nesting arrays
+
+// Nesting berries inside of fruits
+fruits.push(berries);
+
+// Now we can access 'blueberry' with the following
+x = fruits[3][1];
+
+// Create a new variable and nest both arrays
+const allFruits = [fruits, berries];
+
+x = allFruits[1][2];
+
+// concat() - Concatenate arrays (complete one array)
+x = fruits.concat(berries);
+
+// spread operator (...) - Concatenate with
+x = [...fruits, ...berries];
+
+// flat() - Flatten an array
+const arr = [1, 2, [3, 4, 5], 6, [7, 8]];
+x = arr.flat();
+
+// Static methods of Array object
+
+// isArray() - Check is is an array
+x = Array.isArray(fruits);
+
+// from() - Create an array from an array like value
+x = Array.from('12345');
+
+// of() - Create an array from a set of values
+const a = 1;
+const b = 2;
+const c = 3;
+
+x = Array.of(a, b, c);
+
+console.log(x);
+```
+| First Img | Sceonde Img|
+| --------- | ---------- |
+| ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/f3429b42-e5b9-4c7a-8270-6ee91e926377) | ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/0eb26b5a-0e48-42ce-a895-23b76a162f4a) |
+
+# Onject Literal
+3:13:21
 
 #### arrow Functions(ES6)
 

@@ -723,8 +723,57 @@ console.log(x);
 | ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/f3429b42-e5b9-4c7a-8270-6ee91e926377) | ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/0eb26b5a-0e48-42ce-a895-23b76a162f4a) |
 
 # Onject Literal
-3:13:21
+![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/6aa280e6-d069-46b2-93ff-865c8f6f2d58)
 
+```
+let x;
+
+// Creating an object
+const person = {
+  name: 'John Doe',
+  age: 30,
+  isAdmin: true,
+  address: {
+    street: '123 Main st',
+    city: 'Boston',
+    state: 'MA',
+  },
+  hobbies: ['music', 'sports'],
+};
+
+// Accessing object properties
+x = person.name; // Dot notation
+x = person['age']; // Bracket notation
+x = person.address.state;
+x = person.hobbies[0];
+
+// Updating properties
+person.name = 'Jane Doe';
+person['isAdmin'] = false;
+
+// Deleting properties
+delete person.age;
+
+// Create new properties
+person.hasChildren = true;
+
+// Add functions
+person.greet = function () {
+  console.log(`Hello, my name is ${this.name}`);
+};
+
+person.greet();
+
+// Keys with multiple words
+const person2 = {
+  'first name': 'Brad',
+  'last name': 'Traversy',
+};
+
+x = person2['first name'];
+
+console.log(x);
+```
 #### arrow Functions(ES6)
 
 A special form of a function expression

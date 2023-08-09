@@ -774,6 +774,163 @@ x = person2['first name'];
 
 console.log(x);
 ```
+## Object Spread Methods
+```
+let x;
+
+// Create object using the object constructor
+const todo = new Object();
+
+todo.id = 1;
+todo.name = 'Buy Milk';
+todo.completed = false;
+
+x = todo;
+
+// Object Nesting
+const person = {
+  address: {
+    coords: {
+      lat: 42.9384,
+      lng: -71.3232,
+    },
+  },
+};
+
+x = person.address.coords.lat;
+
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+
+// Spread operator
+const obj3 = { ...obj1, ...obj2 };
+// Same as using ...
+const obj4 = Object.assign({}, obj1, obj2);
+
+// Array of objects
+const todos = [
+  { id: 1, name: 'Buy Milk' },
+  { id: 2, name: 'Pickup kids from school' },
+  { id: 3, name: 'Take out trash' },
+];
+
+x = todos[0].name;
+
+// Get array of object keys
+x = Object.keys(todo);
+
+// Get length of an object
+x = Object.keys(todo).length;
+
+// Get array of object values
+x = Object.values(todo);
+
+// Get array of object key/value pairs
+x = Object.entries(todo);
+
+// Check if object has a property
+x = todo.hasOwnProperty('age');
+
+console.log(x);
+```
+| Output 1st Img | Output 2nd Img|
+| --------- | ---------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/e57600a8-5391-42c1-a986-383300d5c0dc)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/245b7cdd-20e3-4e5d-ada5-306550badbdf)|
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/85034e06-12c9-467e-abaf-e39087d3167e)
+||
+
+## Destructuring & Naming
+```
+// Setting object properties with the same name as a variable
+const firstName = 'John';
+const lastName = 'Doe';
+const age = 30;
+
+const person = {
+  firstName,
+  lastName,
+  age,
+};
+
+console.log(person.age);
+
+// Destructuring object properties
+
+const todo = {
+  id: 1,
+  title: 'Take out trash',
+  user: {
+    name: 'John',
+  },
+};
+//pulling these variables out of the object and you can go multiple levels  deep
+const {
+  id: todoId, // rename id to todoId
+  title,
+  user: { name }, // destructuring multiple levels
+} = todo;
+
+console.log(todoId);
+
+// Destructuring arrays & using the rest/spread operator
+// rest operator is a same as spread operator its the three dots but in this use case its often called the rest operator
+const numbers = [23, 67, 33, 49, 52];
+
+const [first, second, ...rest] = numbers;
+
+console.log(first, second, rest);
+```
+| Output 1st Img | Output 2nd Img|
+| --------- | ---------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/d0c3b7fe-5c5e-4351-a92e-e4d5e0751b73)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/1aa059cf-88de-47aa-bba7-66a2b19cea19)|
+
+## JSON intro
+> this is .JS file
+```
+const post = {
+  id: 1,
+  title: 'Post One',
+  body: 'This is the body',
+};
+
+// Convert to JSON string
+const str = JSON.stringify(post);
+
+console.log(str.id);
+
+// Parse JSON
+const obj = JSON.parse(str);
+
+console.log(obj.id);
+
+// JSON & arrays
+const posts = [
+  {
+    id: 1,
+    title: 'Post One',
+    body: 'This is the body',
+  },
+  {
+    id: 2,
+    title: 'Post Two',
+    body: 'This is the body',
+  },
+];
+
+const str2 = JSON.stringify(posts);
+
+console.log(str2);
+```
+> This one .Json File
+```
+[
+  {
+    "id": "1",
+    "title": "Take out trash"
+  }
+]
+```
+
 #### arrow Functions(ES6)
 
 A special form of a function expression

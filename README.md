@@ -885,7 +885,7 @@ console.log(first, second, rest);
 |![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/d0c3b7fe-5c5e-4351-a92e-e4d5e0751b73)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/1aa059cf-88de-47aa-bba7-66a2b19cea19)|
 
 ## JSON intro
-> this is .JS file
+> this is . JS file.
 ```
 const post = {
   id: 1,
@@ -895,7 +895,7 @@ const post = {
 
 // Convert to JSON string
 const str = JSON.stringify(post);
-
+// strigify store in local storage, then when you take it out you would parse it back into an object 
 console.log(str.id);
 
 // Parse JSON
@@ -919,6 +919,7 @@ const posts = [
 
 const str2 = JSON.stringify(posts);
 
+
 console.log(str2);
 ```
 > This one .Json File
@@ -930,6 +931,64 @@ console.log(str2);
   }
 ]
 ```
+> Local StoRAGE-> is a way to store things on your client in your browser and they can only store it can only store strings so you can't store like objects.
+ ```
+// Step 1
+// Create an array of objects called library. Add 3 objects with a property of title, author, status. Title and author should be strings (whatever value you want) and status should be another object with the properties of own, reading and read. Which should all be boolean values. For all status, set own to true and reading and read to false.
+const library = [
+  {
+    title: 'The Road Ahead',
+    author: 'Bill Gates',
+    status: {
+      own: true,
+      reading: false,
+      read: false,
+    },
+  },
+  {
+    title: 'Steve Jobs',
+    author: 'Walter Isaacson',
+    status: {
+      own: true,
+      reading: false,
+      read: false,
+    },
+  },
+  {
+    title: 'Mockingjay',
+    author: 'Suzanne Collins',
+    status: {
+      own: true,
+      reading: false,
+      read: false,
+    },
+  },
+];
+
+// Step 2
+// You finished reading all of the books. Set the read value for all of them to true. Do not edit the initial object. Set the values using dot notation.
+library[0].status.read = true;
+library[1].status.read = true;
+library[2].status.read = true;
+
+// Step 3
+// Destructure the title from the first book and rename the variable to firstBook
+const { title: firstBook } = library[0];
+
+console.log(firstBook);
+
+// Step 4
+// Turn the library object into a JSON string
+const libraryJSON = JSON.stringify(library);
+
+console.log(libraryJSON);
+```
+
+# function, scope & Execution Context
+1) Parameters vs. Arguments.
+2) Parameters are the names of the variables that are used to pass data into a function.
+3) Arguments are the values that are passed into the function.
+4) 
 
 #### arrow Functions(ES6)
 

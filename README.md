@@ -588,9 +588,7 @@ x = d.toLocaleString('default', {
 console.log(x);
 ```
 
-# Arrays & Object
-Screenshot 2.38 hr
-
+# 2) Arrays & Object
 ### Array Literal
 ```
 const numbers = [12, 45, 33, 29, 39, 102];
@@ -627,7 +625,7 @@ x = fruits;
 console.log(x);
 ```
 
-## Basic ArraY Method
+## B) Basic ArraY Method
 let x;
 
 const arr = [28, 38, 44, 29, 109];
@@ -671,7 +669,7 @@ x = arr.slice(1, 4).reverse().toString().charAt(0);
 
 console.log(x);
 
-## array-nesting-concat-spread
+## C)array-nesting-concat-spread
 ```
 let x;
 
@@ -722,7 +720,7 @@ console.log(x);
 | --------- | ---------- |
 | ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/f3429b42-e5b9-4c7a-8270-6ee91e926377) | ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/0eb26b5a-0e48-42ce-a895-23b76a162f4a) |
 
-# Onject Literal
+## D) Onject Literal
 ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/6aa280e6-d069-46b2-93ff-865c8f6f2d58)
 
 ```
@@ -774,7 +772,7 @@ x = person2['first name'];
 
 console.log(x);
 ```
-## Object Spread Methods
+## E) Object Spread Methods
 ```
 let x;
 
@@ -839,7 +837,7 @@ console.log(x);
 |![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/85034e06-12c9-467e-abaf-e39087d3167e)
 ||
 
-## Destructuring & Naming
+## F) Destructuring & Naming
 ```
 // Setting object properties with the same name as a variable
 const firstName = 'John';
@@ -884,7 +882,7 @@ console.log(first, second, rest);
 | --------- | ---------- |
 |![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/d0c3b7fe-5c5e-4351-a92e-e4d5e0751b73)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/1aa059cf-88de-47aa-bba7-66a2b19cea19)|
 
-## JSON intro
+## G) JSON intro
 > this is . JS file.
 ```
 const post = {
@@ -984,11 +982,83 @@ const libraryJSON = JSON.stringify(library);
 console.log(libraryJSON);
 ```
 
-# function, scope & Execution Context
+# 3) function, scope & Execution Context
+## A) Function Basic
 1) Parameters vs. Arguments.
 2) Parameters are the names of the variables that are used to pass data into a function.
 3) Arguments are the values that are passed into the function.
-4) 
+```
+function subtract(num1, num2) {
+  return num1 - num2;
+
+  console.log('After the return');
+}
+
+// Assign the returned value to a variable
+const result = subtract(10, 2);
+
+console.log(result, subtract(20, 5));
+```
+## B) Params & Arguments
+```
+// Default Params
+function registerUser(user = 'Bot') {
+  // Old way - before using `=`
+  // if (!user) {
+  //   user = 'Bot';
+  // }
+// not avilable for globaly 
+  return user + ' is registered';
+}
+
+console.log(registerUser());
+
+// Rest Params( we are use restopertor "...")
+function sum(...numbers) {
+  let total = 0;
+
+// each one of the numbers were going to call it num.
+  for (const num of numbers) {
+    total += num;
+  }
+
+  return total;
+}
+
+console.log(sum(1, 2, 3, 4, 5, 6, 100));
+
+// Objects as params
+function loginUser(user) {
+  return `The user ${user.name} with the id of ${user.id} is logged in`;
+}
+
+const user = {
+  id: 1,
+  name: 'Trick&Track',
+};
+
+console.log(loginUser(user));
+console.log(
+  loginUser({
+    id: 2,
+    name: 'Trick&Track',
+  })
+);
+
+// Arrays as params
+function getRandom(arr) {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+
+  const item = arr[randomIndex];
+
+  console.log(item);
+}
+
+getRandom([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+```
+| Output 1st Img | Output 2nd Img|
+| --------- | ---------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/af79d0c6-bb28-4020-bbca-ed215522fb67)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/737ed0e9-0027-4f40-9207-5a173faa8172)|
 
 #### arrow Functions(ES6)
 

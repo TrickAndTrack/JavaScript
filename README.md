@@ -1046,7 +1046,7 @@ console.log(
 );
 
 // Arrays as params
-function getRandom(arr) {
+function getRandom(arr)/(...arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);
 
   const item = arr[randomIndex];
@@ -1054,13 +1054,155 @@ function getRandom(arr) {
   console.log(item);
 }
 
-getRandom([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+getRandom([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])/(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 ```
 | Output 1st Img | Output 2nd Img|
 | --------- | ---------- |
 |![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/af79d0c6-bb28-4020-bbca-ed215522fb67)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/737ed0e9-0027-4f40-9207-5a173faa8172)|
 
-#### arrow Functions(ES6)
+## C) global-function-scope
+```
+// 'window' is globally scoped
+// alert('Hello'); we dont need to do the window dot we colud just do alert("Hello");
+// console.log(window.innerWidth); //  instad of using this we can use this one console.log(innerWidth);
+
+// Global scope variable
+const x = 100;
+
+console.log(x, 'in global');
+
+function run() {
+  // Access global vars in functions
+  console.log(window.innerHeight);
+  console.log(x, 'in function');
+}
+
+run();
+
+// Access global vars in blocks
+if (true) {
+  console.log(x, 'in block');
+}
+
+function add() {
+  // Overwriting global x (variable shadowing)
+  const x = 1;
+  const y = 50;
+  console.log(x + y);
+}
+
+// Can not access a function scoped variable in global scope
+console.log(y);
+
+add();
+```
+| Output 1st Img | Output 2nd Img|
+| --------- | ---------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/2ee129fa-1101-47d2-8f7a-68379b2df9e1)| ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/8cea9cfe-29f7-47af-9ee5-e1ecad283ebf)|
+
+## D) Block Scope
+> Note: Var is not Block level scoped
+```
+const x = 100;
+
+// An If statement is a block
+if (true) {
+  console.log(x);
+  const y = 200;
+  console.log(x + y);
+}
+
+// console.log(y); // ReferenceError: y is not defined because we define inside a block not globally
+
+// A loop is a block
+for (let i = 0; i <= 10; i++) {
+  console.log(i);
+}
+
+// console.log(i); // ReferenceError: i is not defined because we define inside a block not globally
+
+// Using var
+if (true) {
+  const a = 500;
+  let b = 600;
+  var c = 700;
+}
+
+console.log(c);
+
+// var IS function scoped, you can not access outer the function in other blocks like if condition loop you can use outside of function but you can access outside of the for loop.
+function run() {
+  var d = 100;
+  console.log(d);
+}
+
+run();
+
+// console.log(d);
+
+
+const foo = 1;
+var bar = 2; // Put on the window object
+```
+| Output 1st Img | Output 2nd Img|
+| --------- | ---------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/1235e968-49b3-45c2-8e00-499423d21e8b)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a91de0dc-d36c-4cf5-9d08-808db2ca951c)|
+
+## E) Nested Scope  
+> ((of similar objects of graduated sizes) placed or stored one inside the other.)
+```
+function first() {
+  const x = 100;
+
+  function second() {
+    const y = 200;
+    console.log(x + y); 
+  }
+
+  // console.log(y);
+
+  second();
+}
+
+first();
+
+if (true) {
+  const x = 100;
+
+  if (x === 100) {
+    const y = 200;
+    console.log(x + y);
+  }
+
+  console.log(y);
+}
+//You can access the parent from within the child 
+
+```
+## F) Declaration Vs Expression
+```
+// Function Declaration
+function addDollarSign(value) {
+  return '$' + value;
+}
+
+// When using Function declarations, you can invoke the function before the declaration.
+//Similarly if you try With Function expressions, you can not use, you will get ReferanceError.
+console.log(addDollarSign(100));
+
+// Function Expression
+const addPlusSign = function (value) {
+  return '+' + value;
+};
+
+console.log(addPlusSign(200));
+```
+
+| Output 1st Img | Output 2nd Img|
+| --------- | ---------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/9f6e78d1-2897-4547-9ee4-54aa98bc4a4c)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/099701c8-d70f-4391-abfd-9e8267f8ae7c)|
+
+## G) Arrow Functions(ES6)
 
 A special form of a function expression
 It allows us to write functions faster because
@@ -1068,6 +1210,48 @@ No need to use the function keyword
 No need to use parenthesis() in the case of a single parameter
 No need to use curly {} if a single line code in the function
 No need to use a return statement if a single line code is a function
+
+```
+//  Normal function declaration
+// function add(a, b) {
+//   return a + b;
+// }
+
+// Arrow function syntax
+const add = (a, b) => {
+  return a + b;
+};
+// above function and below function both are same.
+// Implicit Return (because we are not specifying the return keyword )
+const subtract = (a, b) => a - b;
+
+// Can leave off () with a single param (instead of this bracket (a) you can use a)
+const double = (a) => a * 2;
+
+// Returning an object
+//If you are not using a bracket outside of the curly bracket"{ name: 'Brad',};" then the object will not return.
+const createObj = () => ({
+  name: 'Brad',
+});
+
+const numbers = [1, 2, 3, 4, 5];
+
+numbers.forEach(function (n) {
+  console.log(n);
+});
+
+// Arrow function in a callback
+numbers.forEach((n) => console.log(n));
+
+console.log(add(1, 2));
+console.log(subtract(10, 5));
+console.log(double(10));
+console.log(createObj());
+```
+
+| Output 1st Img | Output 2nd Img|
+| --------- | ---------- |
+
 
 #### Normal function expression
 
@@ -1077,7 +1261,7 @@ let invitation = fucntion(name){
 
 invitation("TrickAndTarck")
 
-#### Arrow fucntion
+#### Arrow function
 
 let invitation = name => return `welcome &{name} to this event`
 

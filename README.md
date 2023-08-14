@@ -1248,9 +1248,48 @@ console.log(subtract(10, 5));
 console.log(double(10));
 console.log(createObj());
 ```
+## H) (iiFE)Immediately Invoked Function Expression
+Index.HTML Page
+```
+ <h1>IIFE (Immediately Invoked Function Expressions)</h1>
+    <script src="otherscript.js"></script>
+    <script src="script.js"></script>
+```
+Script.js Page
+```
+// IFFE Syntax (Has its own scope and runs right away)
+(function () {
+  const user = 'IIFE';
+  console.log(user);
+  const hello = () => console.log('Hello from the IIFE');
+  hello();
+})();
 
-| Output 1st Img | Output 2nd Img|
+// Params
+(function (name) {
+  console.log('Hello ' + name);
+})('Trick&Track Team');
+
+// Named IIFE (Can only be called recursively)
+(function hello() {
+  console.log('Hello');
+})();
+
+// you can't call that hello() function outside the function & when you call a function itself thats called recursion.
+// even you can't called the inside function browser will crash.
+```
+otherscript.js Page
+```
+const user = 'Trick&Track';
+console.log(user);
+```
+## I) Execution Context
+JavaScript is single-threaded and its synchronous.
+| 1st Img | 2nd Img|
 | --------- | ---------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/895d70b4-e3de-49ae-9f52-11f7786ae81c)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/3e890b77-948e-43d4-99f6-28c1e2031986)|
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a9893407-1cb5-454e-a16c-5336bf924784)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/fe395174-3385-4d55-b0c1-faa66fcc0f17)|
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/8a708cfd-e435-4617-b636-0404c011fb58)||
 
 
 #### Normal function expression

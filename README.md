@@ -1291,6 +1291,32 @@ JavaScript is single-threaded and its synchronous.
 |![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a9893407-1cb5-454e-a16c-5336bf924784)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/fe395174-3385-4d55-b0c1-faa66fcc0f17)|
 |![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/8a708cfd-e435-4617-b636-0404c011fb58)||
 
+# 4) Logic Control Flow
+a) if-statements
+
+b) else-if-nesting
+```
+
+if (hour >= 7 && hour < 15) {
+  console.log('It is work time!');
+}
+
+if (hour === 6 || hour === 20) {
+  console.log('Brush your teeth!');
+}
+```  
+
+c) switches
+
+d) calculator-challenge
+
+e) truthy-falsy
+
+f) logical-operators
+
+g) logical-assignment
+
+h) ternary-operator
 
 #### Normal function expression
 

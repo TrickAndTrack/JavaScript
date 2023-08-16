@@ -1307,16 +1307,60 @@ if (hour === 6 || hour === 20) {
 ```  
 
 c) switches
+```
+// Immediate value evaluation
+switch (month) {
+  case 1:
+    console.log('It is January');
+    break;
+  case 2:
+    console.log('It is February');
+    break;
+  case 3:
+    console.log('It is March');
+    break;
+  default:
+    console.log('It is not Jan, Feb or March');
+}
 
-d) calculator-challenge
+// Range evaluation
+switch (true) {
+  case hour < 12:
+    console.log('Good Morning');
+    break;
+  case hour < 18:
+    console.log('Good Afternoon');
+    break;
+  default:
+    console.log('Good Night');
+}
+```
+d) truthy-falsy
+```
+// Falsy Values:
+// - false
+// - 0
+// - "" or '' (Empty string)
+// - null
+// - undefined
+// - NaN
 
-e) truthy-falsy
+// Truthy Values:
+// - Everything else that is not falsy
+// - true
+// - '0' (0 in a string)
+// - ' ' (space in a string)
+// - 'false' (false in a string)
+// - [] (empty array)
+// - {} (empty object)
+// - function () {} (empty function)
+```
 
-f) logical-operators
+e) logical-operators
 
-g) logical-assignment
+f) logical-assignment
 
-h) ternary-operator
+g) ternary-operator
 
 #### Normal function expression
 

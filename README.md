@@ -1655,9 +1655,50 @@ for (const key in colorArr) {
 | --------- | ---------- |
 |![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/9300b21f-682d-44c3-be68-a711e634f49d)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a4b675ef-2c8f-4620-bef5-fe3623f28c1c)|
 
+## F) Higher order for each
+## G) Higher order filter & map
+```
+// Short version
+const evenNumbers2 = numbers.filter((number) => number % 2 === 0);
 
+```
+## H) Reduce
+```
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Add all numbers together
+const sum = numbers.reduce(function (accumulator, currentValue) {
+  return accumulator + currentValue;
+}, 0);
+
+const sum2 = numbers.reduce((acc, cur) => acc + cur, 0);
+
+// Using a for loop
+const sum3 = () => {
+  let acc = 0;
+  for (const cur of numbers) {
+    acc += cur;
+  }
+  return acc;
+};
+
+// Shopping cart example (objects)
+const cart = [
+  { id: 1, name: 'Product 1', price: 130 },
+  { id: 2, name: 'Product 2', price: 150 },
+  { id: 3, name: 'Product 3', price: 200 },
+];
+
+const total = cart.reduce(function (acc, product) {
+  return acc + product.price;
+}, 0);
+
+console.log(total);
+```
 | 1st Img | 2nd Img|
 | --------- | ---------- |
+
+# 6) Document Object Model
 
 #### Arrow function
 

@@ -1,4 +1,4 @@
-# JavaScript
+![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/ace63ad4-3378-4ba0-b598-7fc5dc830046)# JavaScript
 JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2022, 98% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries.
 
 > Q) Where we can write Javascript>
@@ -1354,14 +1354,200 @@ d) truthy-falsy
 // - [] (empty array)
 // - {} (empty object)
 // - function () {} (empty function)
+// Checking for literal 0
+if (children) {
+  console.log(`You have ${children} children`);
+} else {
+  console.log('Please enter number of children');
+}
+
+// Solution
+if (!isNaN(children)) {
+  console.log(`You have ${children} children`);
+} else {
+  console.log('Please enter number of children');
+}
+
+// Checking for empty arrays
+const posts = ['Post One'];
+
+// Always true even when empty
+if (posts) {
+  console.log('List Posts');
+} else {
+  console.log('No Posts To List');
+}
+
+// Solution
+if (posts.length > 0) {
+  console.log('List Posts');
+} else {
+  console.log('No Posts To List');
+}
+
+// Checking for empty objects
+const user = {
+  name: 'Brad',
+};
+
+// Always true, even when no properties
+if (user) {
+  console.log('List User');
+} else {
+  console.log('No User');
+}
+
+// Solution
+if (Object.keys(user).length > 0) {
+  console.log('List User');
+} else {
+  console.log('No User');
+}
+
+// Loose Equality (==)
+console.log(false == 0); // true
+console.log('' == 0); // true
+console.log(null == undefined); // true
+
+// Strict Equality
+console.log(false === 0); // false
+console.log('' === 0); // false
+console.log(null === undefined); // false
 ```
 
 e) logical-operators
+```
+console.log(10 < 20 && 30 > 15 && 40 > 30); // Must all be true
+console.log(10 > 20 || 30 < 15); // Only one has to be true
 
+// && - Will return first falsy value or the last value
+let a;
+
+a = 10 && 20;
+a = 10 && 20 && 30;
+a = 10 && 0 && 30;
+a = 10 && '' && 0 && 30;
+
+console.log(a);
+
+const posts = ['Post One', 'Post Two'];
+posts.length > 0 && console.log(posts[0]);
+
+// || - Will return the first truthy value or the last value
+
+let b;
+
+b = 10 || 20;
+b = 0 || 20;
+b = 0 || null || '' || undefined;
+
+console.log(b);
+
+// ?? - Returns the right side operand when the left is null or undefined
+
+let c;
+
+c = 10 ?? 20;
+c = null ?? 20;
+c = undefined ?? 30;
+c = 0 ?? 30;
+c = '' ?? 30;
+
+console.log(c);
+```
 f) logical-assignment
+```
+// ||= assigns the right side value only if the left is a falsy value.
+
+let a = null;
+
+// if (!a) {
+//   a = 10;
+// }
+
+// a = a || 10;
+
+a ||= 10;
+
+console.log(a);
+
+// &&= assigns the right side value only if the left is a truthy value.
+
+let b = 10;
+
+if (b) {
+  b = 20;
+}
+
+b = b && 20;
+
+b &&= 20;
+
+console.log(b);
+
+// ??= assigns the right side value only if the left is null or undefined.
+
+let c = null;
+
+if (c === null || c === undefined) {
+  c = 20;
+}
+
+c = c ?? 20;
+
+c ??= 20;
+
+console.log(c);
+```
 
 g) ternary-operator
+```
+const age = 17;
 
+// Using an if statement
+if (age >= 18) {
+  console.log('You can vote!');
+} else {
+  console.log('You can not vote');
+}
+
+// Using a ternary operator
+age >= 18 ? console.log('You can vote!') : console.log('You can not vote');
+
+// Assigning a conditional value to a variable
+const canVote = age >= 18 ? true : false;
+const canVote2 = age >= 18 ? 'You can vote!' : 'You can not vote';
+
+console.log(canVote);
+console.log(canVote2);
+
+// Multiple statements
+
+const auth = true;
+
+// Long version
+// let redirect;
+
+// if (auth) {
+//   alert('Welcome to the dashboard');
+//   redirect = '/dashboard';
+// } else {
+//   alert('Access Denied');
+//   redirect = '/login';
+// }
+
+// Shorter ternary version
+const redirect = auth
+  ? (alert('Welcome to the dashbaord'), '/dashboard')
+  : (alert('Access Denied'), '/login');
+
+console.log(redirect);
+
+// Ternary with no else
+auth ? console.log('Welcome to the dashboard') : null;
+// Shorthand for ternary with no else
+auth && console.log('Welcome to the dashoard');
+```
 #### Normal function expression
 
 let invitation = fucntion(name){
@@ -1369,6 +1555,109 @@ let invitation = fucntion(name){
 }
 
 invitation("TrickAndTarck")
+
+# 5) Loops & High Order Array Methods
+
+## A) for Loop
+```
+// for ([initialExpression]; [conditionExpression]; [incrementExpression])
+//   statement;
+
+// INITITAL EXPRESSION - Initializes a variable/counter
+// CONDITION EXPRESSION - Condition that the loop will continue to run as long as it is met or until the condition is false
+// INCREMENT EXPRESSION - Expression that will be executed after each iteration of the loop. Usually increments the variable
+// STATEMENT - Code that will be executed each time the loop is run. To execute a `block` of code, use the `{}` syntax
+
+// for (let i = 0; i <= 10; i++) {
+//   if (i === 7) {
+//     console.log('7 is my lucky number');
+//   } else {
+//     console.log('Number ' + i);
+//   }
+// }
+
+// Nested loops
+// for (let i = 1; i <= 10; i++) {
+//   console.log('Number ' + i);
+
+//   for (let j = 1; j <= 5; j++) {
+//     console.log(`${i} * ${j} = ${i * j}`);
+//   }
+// }
+
+// Loop through an array
+const names = ['Brad', 'Sam', 'Sara', 'John', 'Tim'];
+
+for (let i = 0; i < names.length; i++) {
+  if (names[i] === 'John') {
+    console.log(names[i] + ' is the best');
+  } else {
+    console.log(names[i]);
+  }
+}
+
+```
+## B) Break & Continue
+## C) while-do-while
+## D) For-of-loop
+```
+// Loop through arrays
+const items = ['book', 'table', 'chair', 'kite'];
+const users = [{ name: 'Brad' }, { name: 'Kate' }, { name: 'Steve' }];
+
+// for (const item of items) {
+//   console.log(item);
+// }
+
+for (const user of users) {
+  console.log(user.name);
+}
+
+// Loop over strings
+const str = 'Hello World';
+
+for (const letter of str) {
+  console.log(letter);
+}
+
+// Loop over Maps
+const map = new Map();
+map.set('name', 'John');
+map.set('age', 30);
+
+for (const [key, value] of map) {
+  console.log(key, value);
+}
+
+```
+## E) For-In-loop
+```
+// Loop through objects
+const colorObj = {
+  color1: 'red',
+  color2: 'blue',
+  color3: 'orange',
+  color4: 'green',
+};
+
+for (const key in colorObj) {
+  console.log(key, colorObj[key]);
+}
+
+// Loop through arrays
+const colorArr = ['red', 'green', 'blue', 'yellow'];
+
+for (const key in colorArr) {
+  console.log(colorArr[key]);
+}
+```
+| 1st Img | 2nd Img|
+| --------- | ---------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/9300b21f-682d-44c3-be68-a711e634f49d)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a4b675ef-2c8f-4620-bef5-fe3623f28c1c)|
+
+
+| 1st Img | 2nd Img|
+| --------- | ---------- |
 
 #### Arrow function
 

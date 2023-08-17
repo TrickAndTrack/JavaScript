@@ -1,4 +1,3 @@
-![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/ace63ad4-3378-4ba0-b598-7fc5dc830046)# JavaScript
 JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2022, 98% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries.
 
 > Q) Where we can write Javascript>

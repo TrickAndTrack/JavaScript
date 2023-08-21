@@ -1698,6 +1698,240 @@ console.log(total);
 | --------- | ---------- |
 
 # 6) Document Object Model
+## A) Dom-Intro
+| 1st Img | 2nd Img|
+| --------- | ---------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/d38594b3-2629-4dbe-86e6-2d481a461cdb)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/9675589b-6da2-46f4-b609-41fc21dbc3ce)|
+
+```
+// Global window object
+console.log(window);
+
+// The document object is part of the window object
+console.dir(window.document);
+
+// We can access DOM elements directly with properties
+console.log(document.body);
+console.log(document.links[0]);
+
+// We can set properties of elements
+// document.body.innerHTML = '<h1>Hello from body</h1>';
+
+// The document object has a ton of methods. One is `document.write()`, which will write something to the document
+document.write('Hello from JS');
+
+// We also have methods to select elements more directly
+document.getElementById('main').innerHTML = '<h1>Hello from main</h1>';
+
+document.querySelector('#main h1').innerText = 'Hello';
+```
+
+Created by the browser as the HTML load into the Browser
+browser created an object of HTML called 'document object'
+tree-like structure
+
+console.log(document.)
+when you write 'document.' after that if you see after '.' you will see lots of methods will see
+| 1 Img  | 2 Img |
+| ------------- | ------------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/d9714478-9386-44e2-9db8-1ad88c7d395d)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a3ed5171-e715-4e88-a682-5cc209ddd09c)
+
+## B) dom-selectors-single-element
+
+```
+// document.getElementById()
+
+console.log(document.getElementById('app-title'));
+
+// Get attributes
+console.log(document.getElementById('app-title').id);
+console.log(document.getElementById('app-title').className);
+console.log(document.getElementById('app-title').getAttribute('id'));
+
+// Set attributes
+document.getElementById('app-title').title = 'Shopping List';
+document.getElementById('app-title').setAttribute('class', 'title');
+
+const title = document.getElementById('app-title');
+
+// Get/change content
+console.log(title.textContent);
+title.textContent = 'Hello World';
+title.innerText = 'Hello Again';
+title.innerHTML = '<strong>Shopping List</strong>';
+
+// Change styles
+title.style.color = 'red';
+title.style.backgroundColor = 'black';
+title.style.padding = '10px';
+title.style.borderRadius = '10px';
+
+// document.querySelector()
+
+// Use any CSS selector
+console.log(document.querySelector('h1'));
+console.log(document.querySelector('#app-title'));
+console.log(document.querySelector('.container'));
+console.log(document.querySelector('input[type="text"]'));
+console.log(document.querySelector('li:nth-child(2)').innerText);
+
+const secondItem = document.querySelector('li:nth-child(2)');
+secondItem.innerText = 'Apple Juice';
+secondItem.style.color = 'red';
+
+// Use these methods on other elements
+const list = document.querySelector('ul');
+console.log(list);
+const firstItem = list.querySelector('li');
+firstItem.style.color = 'blue';
+```
+## C) dom-selectors-multiple-elements
+```
+// querySelectorAll()
+// Returns a NodeList
+
+const listItems = document.querySelectorAll('.item');
+
+// Access elements by index
+console.log(listItems[1].innerText);
+
+// Setting a color for specific element
+listItems[1].style.color = 'red';
+
+// We can use forEach() on a NodeList
+listItems.forEach((item, index) => {
+  item.style.color = 'red';
+
+  if (index === 1) {
+    item.remove();
+  }
+
+  if (index === 0) {
+    item.innerHTML = ` Oranges
+    <button class="remove-item btn-link text-red">
+      <i class="fa-solid fa-xmark"></i>
+    </button>`;
+  }
+});
+
+// getElementsByClassName()
+// Returns an HTMLCollection
+
+const listItems2 = document.getElementsByClassName('item');
+
+console.log(listItems2[2].innerText);
+
+const listItemsArray = Array.from(listItems2);
+
+listItemsArray.forEach((item) => {
+  console.log(item.innerText);
+});
+
+// getElementsByTagName()
+
+const listItems3 = document.getElementsByTagName('li');
+console.log(listItems3[0].innerText);
+```
+## D) Traversing The Dom
+
+In this topic mention relationships between elements is a node like text node, comments node 
+```
+let output;
+
+// Get child elements from a parent
+
+const parent = document.querySelector('.parent');
+
+output = parent.children;
+
+output = parent.children[1].innerText;
+output = parent.children[1].className;
+output = parent.children[1].nodeName;
+
+parent.children[1].innerText = 'Child Two';
+parent.children[1].style.color = 'red';
+
+parent.firstElementChild.innerText = 'Child One';
+parent.lastElementChild.innerText = 'Child Three';
+
+// Get parent elements from a child
+
+const child = document.querySelector('.child');
+
+output = child.parentElement;
+child.parentElement.style.border = '1px solid #ccc';
+child.parentElement.style.padding = '10px';
+
+// Get sibling elements
+
+const secondItem = document.querySelector('.child:nth-child(2)');
+
+output = secondItem;
+output = secondItem.nextElementSibling;
+
+secondItem.nextElementSibling.style.color = 'green';
+secondItem.previousElementSibling.style.color = 'orange';
+
+console.log(output);
+```
+> Below digram will help you to understand parent and child reltion
+| 1 Img  | 2 Img |
+| ------------- | ------------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/3ed844c5-908d-4726-b654-32171ada4bf8)||
+
+
+## E) Traversing The DOM- All Nodes
+
+| 1 Img  | 2 Img |
+| ------------- | ------------- |
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/e58d817c-a10a-47bf-85e8-67f7df993de9)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/6c4f428c-da81-4f39-8082-4a234dab1554)|
+
+
+```
+let output;
+
+// Get child nodes
+
+const parent = document.querySelector('.parent');
+
+output = parent.childNodes;
+output = parent.childNodes[0].textContent;
+output = parent.childNodes[0].nodeName;
+output = parent.childNodes[3].textContent;
+output = parent.childNodes[3].outerHTML;
+
+output = parent.childNodes[3].innerText = 'Child One';
+output = parent.childNodes[5].style.color = 'red';
+
+output = parent.firstChild;
+output = parent.lastChild;
+
+parent.lastChild.textContent = 'Hello';
+
+// Get parent node
+
+const child = document.querySelector('.child');
+
+output = child.parentNode;
+output = child.parentElement;
+
+child.parentNode.style.backgroundColor = '#ccc';
+child.parentNode.style.padding = '10px';
+
+// Get sibling nodes
+const secondItem = document.querySelector('.child:nth-child(2)');
+
+output = secondItem.nextSibling;
+output = secondItem.previousSibling;
+
+console.log(output);
+```
+
+
+
+
+
+
 
 #### Arrow function
 
@@ -1785,16 +2019,6 @@ cars.forEach(function(element){
 	console.log(element)
 } )
 
-#### Javascript DOM(Document Object Model)
-Created by the browser as the HTML load into the Browser
-browser created an object of HTML called 'document object'
-tree-like structure
-
-console.log(document.)
-when you write 'document.' after that if you see after '.' you will see lots of methods will see
-| 1 Img  | 2 Img |
-| ------------- | ------------- |
-|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/d9714478-9386-44e2-9db8-1ad88c7d395d)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a3ed5171-e715-4e88-a682-5cc209ddd09c)
 
 Extenstion Requre for JavaScript
 1) Liver Server

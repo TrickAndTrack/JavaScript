@@ -2118,6 +2118,271 @@ replaceAllItems();
 replaceChildHeading();
 ```
 ## k) Remove element 
+```
+// remove() Method
+function removeClearButton() {
+  const clearBtn = document.querySelector('#clear');
+  clearBtn.remove();
+}
+
+// removeChild() Method
+function removeFirstItem() {
+  const ul = document.querySelector('ul');
+  const li = document.querySelector('li:first-child');
+
+  ul.removeChild(li);
+}
+
+// Other examples
+
+function removeItem(itemNumber) {
+  const ul = document.querySelector('ul');
+  const li = document.querySelector(`li:nth-child(${itemNumber})`);
+
+  ul.removeChild(li);
+}
+
+function removeItem2(itemNumber) {
+  const ul = document.querySelector('ul');
+  const li = document.querySelectorAll('li')[itemNumber - 1];
+
+  ul.removeChild(li);
+}
+
+function removeItem3(itemNumber) {
+  const li = document.querySelectorAll('li');
+  li[itemNumber - 1].remove();
+}
+
+const removeItem4 = (itemNumber) =>
+  document.querySelectorAll('li')[itemNumber - 1].remove();
+
+removeClearButton();
+// removeFirstItem();
+// removeItem(2);
+removeItem4(2);
+```
+## K) style & classes
+```
+const text = document.querySelector('p');
+const itemList = document.querySelector('.item-list');
+const items = itemList.querySelectorAll('li');
+
+function run() {
+  // className - Gets a string of all classes
+  console.log(itemList.className);
+  // Changing the classes with className
+  text.className = 'card dark';
+
+  // classList - Array of classes, which also has methods to add, remove, toggle and replace
+  console.log(itemList.classList);
+
+  // We can loop through the classes
+  itemList.classList.forEach((c) => console.log(c));
+
+  // Add, remove, toggle, replace
+  text.classList.add('dark');
+  text.classList.remove('card');
+  text.classList.toggle('hidden');
+  text.classList.replace('card', 'dark');
+
+  // style property - Add styles to elements
+  itemList.style.lineHeight = '3';
+
+  items.forEach((item, index) => {
+    item.style.color = 'red';
+
+    if (index === 2) {
+      item.style.color = 'blue';
+    }
+  });
+}
+
+document.querySelector('button').onclick = run;
+```
+# 7) EVENT
+## A) Event listner
+|1st img|
+|-------|
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/2e76e8be-34df-4f2f-8fc1-f50017be4eb5)|
+```
+const clearBtn = document.querySelector('#clear');
+
+function onClear() {
+  const itemList = document.querySelector('ul');
+  const items = itemList.querySelectorAll('li');
+
+  // itemList.innerHTML = '';
+
+  // items.forEach((item) => item.remove());
+
+  while (itemList.firstChild) {
+    itemList.removeChild(itemList.firstChild);
+  }
+}
+
+// JavaScript Event Listener
+clearBtn.onclick = function () {
+  alert('Clear Items');
+};
+
+clearBtn.onclick = function () {
+  console.log('Clear Items');
+};
+
+// addEventListener()
+clearBtn.addEventListener('click', () => alert('Clear Items'));
+
+// Use named function
+clearBtn.addEventListener('click', onClear);
+
+// removeEventListener()
+setTimeout(() => clearBtn.removeEventListener('click', onClear), 5000);
+
+// Fire off event from JS
+setTimeout(() => clearBtn.click(), 5000);
+```
+## B) mouse events
+```
+const logo = document.querySelector('img');
+
+const onClick = () => console.log('click event');
+const onDoubleClick = () => {
+  if (document.body.style.backgroundColor !== 'purple') {
+    document.body.style.backgroundColor = 'purple';
+    document.body.style.color = 'white';
+  } else {
+    document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';
+  }
+};
+// mouse down and mouse up 
+const onRightClick = () => console.log('right click event');
+const onMouseDown = () => console.log('mouse down event');
+const onMouseUp = () => console.log('mouse up event');
+const onMouseWheel = () => console.log('mouse wheel event');
+const onMouseOver = () => console.log('mouse over event');
+const onMouseOut = () => console.log('mouse out event');
+// you can move file  
+const onDragStart = () => console.log('drag start event');
+const onDrag = () => console.log('drag event');
+const onDragEnd = () => console.log('drag end event');
+
+// Event Listeners
+logo.addEventListener('click', onClick);
+logo.addEventListener('dblclick', onDoubleClick);
+logo.addEventListener('contextmenu', onRightClick);
+logo.addEventListener('mousedown', onMouseDown);
+logo.addEventListener('mouseup', onMouseUp);
+logo.addEventListener('wheel', onMouseWheel);
+logo.addEventListener('mouseover', onMouseOver);
+logo.addEventListener('mouseout', onMouseOut);
+logo.addEventListener('dragstart', onDragStart);
+logo.addEventListener('drag', onDrag);
+logo.addEventListener('dragend', onDragEnd);
+```
+## C) Event-object
+```
+const logo = document.querySelector('img');
+
+function onClick(e) {
+  // Event Properties
+  // console.log(e.target);
+  // console.log(e.currentTarget);
+  // console.log(e.type);
+  // console.log(e.timeStamp);
+  // console.log(e.clientX);
+  // console.log(e.clientY);
+  // console.log(e.offsetX);
+  // console.log(e.offsetY);
+  // console.log(e.pageX);
+  // console.log(e.pageY);
+  // console.log(e.screenX);
+  // console.log(e.screenY);
+}
+
+function onDrag(e) {
+  document.querySelector('h1').textContent = `X ${e.clientX} Y ${e.clientY}`;
+}
+
+logo.addEventListener('click', onClick);
+logo.addEventListener('drag', onDrag);
+
+// document.body.addEventListener('click', function (e) {
+//   console.log(e.target);
+//   console.log(e.currentTarget);
+// });
+
+// e.preventDefault() method prevents the default behavior
+document.querySelector('a').addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log('Link was clicked');
+});
+
+/*
+- `target` - The element that triggered the event
+- `currentTarget` - The element that the event listener is attached to (These are the same in this case
+- `type` - The type of event that was triggered
+- `timeStamp` - The time that the event was triggered
+- `clientX` - The x position of the mouse click relative to the window
+- `clientY` - The y position of the mouse click relative to the window
+- `offsetX` - The x position of the mouse click relative to the element
+- `offsetY` - The y position of the mouse click relative to the element
+- `pageX` - The x position of the mouse click relative to the page
+- `pageY` - The y position of the mouse click relative to the page
+- `screenX` - The x position of the mouse click relative to the screen
+- `screenY` - The y position of the mouse click relative to the screen
+*/
+```
+## D) Keyboard Events & Key Properites
+```
+const itemInput = document.getElementById('item-input');
+
+const onKeyPress = (e) => {
+  console.log('keypress');
+};
+
+const onKeyUp = (e) => {
+  console.log('keyup');
+};
+
+const onKeyDown = (e) => {
+  // key
+  // if (e.key === 'Enter') {
+  //   alert('You pressed enter');
+  // }
+
+  // keyCode
+  // https://www.toptal.com/developers/keycode/table-of-all-keycodes
+  if (e.keyCode === 13) {
+    alert('You pressed enter');
+  }
+
+  // code
+  if (e.code === 'Digit1') {
+    console.log('You pressed 1');
+  }
+
+  // repeat
+  if (e.repeat) {
+    console.log('You are holding down ' + e.key);
+  }
+
+  // shiftKey, ctrlKey & altKey
+  console.log('Shift: ' + e.shiftKey);
+  console.log('Control: ' + e.ctrlKey);
+  console.log('Alt: ' + e.altKey);
+
+  if (e.shiftKey && e.key === 'K') {
+    console.log('You hit shift + K');
+  }
+};
+
+// Event Listeners
+itemInput.addEventListener('keypress', onKeyPress);
+itemInput.addEventListener('keyup', onKeyUp);
+itemInput.addEventListener('keydown', onKeyDown);
+```
 
 
 

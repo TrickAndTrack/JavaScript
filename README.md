@@ -588,6 +588,7 @@ console.log(x);
 ```
 
 # 2) Arrays & Object
+> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
 ### Array Literal
 ```
 const numbers = [12, 45, 33, 29, 39, 102];
@@ -1866,7 +1867,7 @@ child.parentElement.style.padding = '10px';
 
 const secondItem = document.querySelector('.child:nth-child(2)');
 
-output = secondItem;
+output = second item;
 output = secondItem.nextElementSibling;
 
 secondItem.nextElementSibling.style.color = 'green';
@@ -1874,19 +1875,18 @@ secondItem.previousElementSibling.style.color = 'orange';
 
 console.log(output);
 ```
-> Below digram will help you to understand parent and child reltion
+> The Below diagram will help you to understand the parent and child reltion
 | 1 Img  | 2 Img |
 | ------------- | ------------- |
 |![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/3ed844c5-908d-4726-b654-32171ada4bf8)||
 
 
 ## E) Traversing The DOM- All Nodes
-
+> int the first image different type of node(Dom nodes) types there's 12
+> In 2nd img Dome node relationship
 | 1 Img  | 2 Img |
 | ------------- | ------------- |
 |![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/e58d817c-a10a-47bf-85e8-67f7df993de9)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/6c4f428c-da81-4f39-8082-4a234dab1554)|
-
-
 ```
 let output;
 
@@ -1927,6 +1927,197 @@ output = secondItem.previousSibling;
 console.log(output);
 ```
 
+## F) Create & Append Elements
+Q)  How we can create elements in JS? so we can create any DOm elements that we want and then insert it into the Document
+we can easily inject in code the code
+```
+const div = document.createElement('div');
+div.className = 'my-element';
+div.id = 'my-element';
+div.setAttribute('title', 'My Element');
+
+// div.innerText = 'Hello World';
+
+const text = document.createTextNode('Hello World');
+div.appendChild(text);
+
+// document.body.appendChild(div);
+
+document.querySelector('ul').appendChild(div);
+```
+## G) innerHTML vs CreateElement
+```
+// Quick & Dirty
+function createListItem(item) {
+  const li = document.createElement('li');
+
+  li.innerHTML = `${item}
+  <button class="remove-item btn-link text-red">
+    <i class="fa-solid fa-xmark"></i>
+  </button>`;
+
+  document.querySelector('.items').appendChild(li);
+}
+
+// Clean & Performant
+function createNewItem(item) {
+  const li = document.createElement('li');
+  li.appendChild(document.createTextNode(item));
+
+  const button = document.createElement('button');
+  button.className = 'remove-item btn-link text-red';
+
+  const icon = document.createElement('i');
+  icon.className = 'fa-solid fa-xmark';
+
+  button.appendChild(icon);
+  li.appendChild(button);
+
+  document.querySelector('.items').appendChild(li);
+}
+
+createListItem('Eggs');
+createNewItem('Cheese');
+```
+
+## H) Refactor-to-multiple-function
+```
+function createNewItem(item) {
+  const li = document.createElement('li');
+  li.appendChild(document.createTextNode(item));
+
+  const button = createButton('remove-item btn-link text-red');
+
+  li.appendChild(button);
+
+  document.querySelector('.items').appendChild(li);
+}
+
+function createButton(classes) {
+  const button = document.createElement('button');
+  button.className = classes;
+
+  const icon = createIcon('fa-solid fa-xmark');
+  button.appendChild(icon);
+
+  return button;
+}
+
+function createIcon(classes) {
+  const icon = document.createElement('i');
+  icon.className = classes;
+  return icon;
+}
+
+createNewItem('Cheese');
+createNewItem('Sauce');
+```
+## I) Insert Elements, Text & HTML
+```
+// insertAdjacentElement Example
+function insertElement() {
+  const filter = document.querySelector('.filter');
+
+  const h1 = document.createElement('h1');
+  h1.textContent = 'insertAdjacentElement';
+
+  filter.insertAdjacentElement('beforebegin', h1);
+}
+
+// insertAdjacentText Example
+function insertText() {
+  const item = document.querySelector('li:first-child');
+
+  item.insertAdjacentText('beforebegin', 'insertAdjacentText');
+}
+
+// insertAdjacentHTML example
+function insertHTML() {
+  const clearBtn = document.querySelector('#clear');
+
+  clearBtn.insertAdjacentHTML('afterend', '<h2>insertAdjacentHTML</h2>');
+}
+
+// insertBefore Example
+function insertBeforeItem() {
+  const ul = document.querySelector('ul');
+
+  const li = document.createElement('li');
+  li.textContent = 'insertBefore';
+
+  const thirdItem = document.querySelector('li:nth-child(3)');
+
+  ul.insertBefore(li, thirdItem);
+}
+
+insertElement();
+
+/*
+<!-- beforebegin -->
+<p>
+  <!-- afterbegin -->
+  foo
+  <!-- beforeend -->
+</p>
+<!-- afterend -->
+*/
+```
+## J) Replacing Element
+```
+// replaceWith() Method
+function replaceFirstItem() {
+  const firstItem = document.querySelector('li:first-child');
+
+  const li = document.createElement('li');
+  li.textContent = 'Replaced First';
+
+  firstItem.replaceWith(li);
+}
+
+// OuterHTML Property
+function replaceSecondItem() {
+  const secondItem = document.querySelector('li:nth-child(2)');
+
+  secondItem.outerHTML = '<li>Replaced Second</li>';
+}
+
+// Replace All Items
+function replaceAllItems() {
+  const lis = document.querySelectorAll('li');
+
+  // lis.forEach((item, index) => {
+  //   // item.outerHTML = '<li>Replace All</li>';
+// If we want to chose specific atoms and want to do something
+  //   if (index === 1) {
+  //     item.innerHTML = 'Second Item';
+  //   } else {
+  //     item.innerHTML = 'Replace All';
+  //   }
+  // });
+// below code is alternate way of above code
+  lis.forEach(
+    (item, index) =>
+      (item.outerHTML = index === 1 ? '<li>Second Item</li>' : '<li>Item</li>')
+  );
+}
+// By selecting the parent element and then using a method called replace child.
+// replaceChild() Method
+function replaceChildHeading() {
+  const header = document.querySelector('header');
+  const h1 = document.querySelector('header h1');
+
+  const h2 = document.createElement('h2');
+  h2.id = 'app-title';
+  h2.textContent = 'Shopping List';
+  header.replaceChild(h2, h1);
+}
+
+replaceFirstItem();
+replaceSecondItem();
+replaceAllItems();
+replaceChildHeading();
+```
+## k) Remove element 
 
 
 

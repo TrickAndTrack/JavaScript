@@ -2383,11 +2383,178 @@ itemInput.addEventListener('keypress', onKeyPress);
 itemInput.addEventListener('keyup', onKeyUp);
 itemInput.addEventListener('keydown', onKeyDown);
 ```
+## E) Input Events
+```
+const itemInput = document.getElementById('item-input');
+const priorityInput = document.getElementById('priority-input');
+const checkbox = document.getElementById('checkbox');
+const heading = document.querySelector('h1');
 
+function onInput(e) {
+  heading.textContent = e.target.value;
+}
+// this will give you output what you enter in input box that will print
+// itemInput.addEventListener('input', onInput);
+// it will print what you select from dropdown 
+//priorityInput.addEventListener('change', onInput);
 
+// if you selecetd check box it will print or o/p is true if you unchecked the box so it will be false 
+function onChecked(e) {
+  const isChecked = e.target.checked;
+  heading.textContent = isChecked ? 'Checked' : 'Not Checked';
+}
 
+function onFocus() {
+  console.log('Input is focused');
+  itemInput.style.outlineStyle = 'solid';
+  itemInput.style.outlineWidth = '1px';
+  itemInput.style.outlineColor = 'red';
+}
 
+function onBlur() {
+  console.log('Input is not focused');
+  itemInput.style.outlineStyle = 'none';
+}
 
+// input, change, focus and blur events
+// this will give you output what you enter in input box that will print
+itemInput.addEventListener('input', onInput);
+priorityInput.addEventListener('change', onInput);
+checkbox.addEventListener('input', onChecked);
+itemInput.addEventListener('focus', onFocus);
+itemInput.addEventListener('blur', onBlur);
+```
+|1st img| 2nd img|
+|-------|--------|
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a63edc01-3503-4cbf-997c-567f9b75118c)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/9ac07a40-6344-4aa4-a63c-530b33348b8c)|
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/d756d83c-6b6f-45da-a214-58da3cd156a5)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/53d4b6d8-7970-4aad-9d64-99ed914effe9)|
+
+## F) Form Submission & FormData Object
+```
+const form = document.getElementById('item-form');
+
+function onSubmit(e) {
+  e.preventDefault();
+
+  // Get value with .value
+  const item = document.getElementById('item-input').value;
+  const priority = document.getElementById('priority-input').value;
+
+  if (item === '' || priority === '0') {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  console.log(item, priority);
+}
+
+// Using the FormData Object
+function onSubmit2(e) {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+
+  // Get individual items
+  const item = formData.get('item');
+  const priority = formData.get('priority');
+
+  console.log(item, priority);
+
+  // Get al entried as an Iterator
+  const entries = formData.entries();
+  console.log(entries);
+
+  // Loop through entries
+  for (let entry of entries) {
+    console.log(entry[1]);
+  }
+}
+
+form.addEventListener('submit', onSubmit2);
+```
+|1st img| 2nd img|
+|-------|--------|
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/ed733f03-5eac-4492-9f50-9bd5a92083c5)|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/b1b0650b-ae71-4b6d-97df-3bcf3cf3744b)|
+
+## G) Event Bubbling
+|1st img| 2nd img|
+|-------|--------|
+|![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/a85f1031-c401-4f0e-b462-19d3e8367b54)|
+
+## H) Event Delegation & Multiple Events
+```
+const listItems = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+
+// Add an event listener on all items which atome you select that item will remove
+// listItems.forEach((item) => {
+//   item.addEventListener('click', (e) => {
+//     e.target.remove();
+//   });
+// });
+
+// Add a single event listener on the parent (Event Delegation)
+list.addEventListener('click', (e) => {
+  if (e.target.tagName === 'LI') {
+    e.target.remove();
+  }
+});
+// which item under the mouse that item will turn into red
+list.addEventListener('mouseover', (e) => {
+  if (e.target.tagName === 'LI') {
+    e.target.style.color = 'red';
+  }
+});
+```
+## I) Page Loading & Window Events
+```
+// On Page Load
+// window.onload = function () {
+//   document.querySelector('h1').textContent = 'Hello World';
+// };
+
+window.addEventListener('load', () => console.log('Page Loaded'));
+
+// On DOM Load
+window.addEventListener('DOMContentLoaded', () => console.log('DOM Loaded'));
+
+console.log('Run me');
+
+// Resize Event
+window.addEventListener('resize', () => {
+  document.querySelector(
+    'h1'
+  ).innerText = `Resized to ${window.innerWidth} x ${window.innerHeight}`;
+});
+
+// Scroll Event
+window.addEventListener('scroll', () => {
+  console.log(`Scrolled: ${window.scrollX} x ${window.scrollY}`);
+// if you scroll above  the 70 so its turn into balck background and text colour will be white
+  if (window.scrollY > 70) {
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white';
+  } else {
+    document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';
+  }
+});
+
+// Focus & Blur Events
+// this Event when you click on window it will convert into blue if you click outside the window trun into black
+window.addEventListener('focus', () => {
+  document.querySelectorAll('p').forEach((p) => {
+    p.style.color = 'blue';
+  });
+});
+
+window.addEventListener('blur', () => {
+  document.querySelectorAll('p').forEach((p) => {
+    p.style.color = 'black';
+  });
+});
+```
+# END
 
 #### Arrow function
 

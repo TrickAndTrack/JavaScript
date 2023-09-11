@@ -84,16 +84,16 @@ Let and Var
 
 In global scope Var and let working in a similar way and Const is little diffrant its for consatatt and its for value that are not going to reassigned at a letter time.
 1st Example:
-
+```
 let firstName = 'John';
 let lastName = 'Doe';
 console.log(firstName, lastName);
 let age = 30;
 
 console.log(age);
-
+```
 2nd Example:
-
+```
 let firstName = 'John';
 let lastName = 'Doe';
 console.log(firstName, lastName);
@@ -104,12 +104,12 @@ console.log(age);
 2nd output is 30 
 it is undefined and this i due to something called hoisting
 Which is a little more adavaced
-
+```
 ### Naming Conventions
  - Only letters, numbers, underscores and dollar signs
  - Can't start with a number
 
-. ) Multi-Word Formatting
+1) Multi-Word Formatting
  firstName = camelCase
  first_name = underscore
  FirstName = PascalCase

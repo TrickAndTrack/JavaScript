@@ -126,7 +126,13 @@ I am not directly chanaging veribale i am changing property or a key inside the 
 ![image](https://github.com/TrickAndTrack/JavaScript/assets/73180409/0bdcb7d4-8df1-4369-b160-71e9918384c3)
 
 > Q) which one is the best let, var, cosnt? I always use const unless I know iam going to directly reassign something. 
-
+|Keyword|let|const|var|
+|-----|-----|-----|-----|
+|Global Scope|N|N|Y|
+|Functional Scope|Y|Y|Y|
+|Block Scope|Y|Y|N|
+|Can be Reassigned|Y|N|Y|
+|Can be-Re-decleraed|N|N|Y|
 # Declare multiple values at once
 ```
 let a, b, c;
